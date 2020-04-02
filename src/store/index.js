@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     menu: [],
     cart:[],
-    totalPrice:0
+    totalPrice:0,
+    orderInfo:{}
 
   },
   mutations: {
@@ -19,13 +20,18 @@ export default new Vuex.Store({
       const index = state.cart.indexOf(item)
       state.cart.splice(index,1)
 
-    }
+    },
+    setOrder:(state,data)=>(state.orderInfo =data)
   },
   actions: {
     async fetchMenuItems({commit}){
       const response = await axios.get('http://localhost:5000/api/beans')
       commit('setMenu',response.data.menu)
     },
+      async postOrder({commit}){
+        const response = await axios.post('http://localhost:5000/api/beans')
+        commit('setOrder',response.data)
+      }
   
   },
   getters:{
