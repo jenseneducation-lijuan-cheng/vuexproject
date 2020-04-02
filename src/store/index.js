@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     menu: [],
     cart:[],
+    totalPrice:0
 
   },
   mutations: {
@@ -28,6 +29,16 @@ export default new Vuex.Store({
   
   },
   getters:{
+    totalPrice(state){
+       state.totalPrice=0
+      state.cart.forEach(item=>{
+        state.totalPrice= state.totalPrice+item.price
+
+      })
+
+      return state.totalPrice
+
+    }
 
   },
 })
