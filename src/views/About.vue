@@ -2,6 +2,7 @@
   <div class="about">
    <header>
      <img src="../assets/graphics/graphics-header.svg" class="pics">
+     <Hamburger/>
    </header>
      <div class="text">
         <h1>Vårt Kaffe</h1>
@@ -19,9 +20,19 @@
      </footer>
   </div>
 </template>
+<script>
+import Hamburger from "../components/Hamburger"
+export default {
+  components:{ Hamburger
+  }
+  
+}
+</script>
 <style  lang = scss scoped>
 .about{
+  position:relative;
   width: 500px;
+  
   .text {
     width: 90%;
     margin: auto;

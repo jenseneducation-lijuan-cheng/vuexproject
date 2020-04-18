@@ -1,9 +1,10 @@
 <template>
   <div class="menu">
+   
     <Cart/>
     <header>
       <img src="../assets/graphics/graphics-header.svg" class="image" />
-     
+      <Hamburger/>
     </header>
     <h1>Meny</h1>
     <MenuItem v-for="item in menu" :key="item.id" v-bind:item="item" />
@@ -16,11 +17,13 @@
 <script>
 import MenuItem from "../components/MenuItem";
 import Cart from "../components/Cart"
+import Hamburger from "../components/Hamburger"
 import { mapActions } from "vuex";
 export default {
   components: {
     MenuItem,
-    Cart
+    Cart,
+    Hamburger
   },
 
   methods: {

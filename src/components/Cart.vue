@@ -1,6 +1,6 @@
 <template>
   <section class="overBground">
-    <div class="cartWrapper">
+    <div class="cartWrapper" :class="{ comeOut: showCart }">
       <img src="../assets/graphics/bag.svg" alt="Bag/Cart" @click="showCart = !showCart" />
       <div class="lengthWrapper">
         <span>{{cart.length}}</span>
@@ -49,13 +49,14 @@ export default {
 
     cartItems() {
       return this.$store.state.menu.filter(
-        item => this.$store.state.cart.indexOf(item) !== -1
+        //item => this.$store.state.cart.indexOf(item) !== -1
+        item => this.$store.state.cart.find(item2 => item2.id === item.id)
       );
     }
   },
   methods: {
     ...mapActions(["postOrder"]),
-    count(item) {
+     count(item) {
       return this.cart.filter(item2 => item2.id == item.id).length;
     },
     async postItems() {
@@ -70,6 +71,7 @@ export default {
 <style lang = scss scoped >
 .overBground {
   .overlay {
+    z-index: 10000;
     display: flex;
     justify-content: center;
     background-color: rgba(66, 26, 14, 0.7);
@@ -77,9 +79,10 @@ export default {
     height: 1155px;
     position: absolute;
   }
-
+  .comeOut {
+    z-index: 99999;
+  }
   .cartWrapper {
-    z-index: 999;
     display: flex;
     background: rgb(22, 22, 22);
     border-radius: 100%;

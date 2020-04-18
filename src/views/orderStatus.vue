@@ -5,7 +5,7 @@
     <img src="../assets/graphics/drone.svg" alt="Airbean Drone" />  
   <h1>Din beställning är på väg</h1>
   <h3>{{orderInfo.eta}} minuter</h3>
-   <a href="/menu"><button class="cool">OK, cool</button></a>
+   <button class="cool" @click="$router.push('/Menu')">OK, cool</button>
   </div>
   
 </template>
@@ -26,7 +26,6 @@ export default {
      height: 100vh;
      display: flex;
      flex-direction: column;
-     justify-content: center;
      justify-content: space-around;
      background-color: rgb(236, 114, 70);
       h1 {
@@ -51,7 +50,7 @@ export default {
     padding: 10px;
     cursor: pointer;
     text-align: center;
-
+    align-self:center;
     outline: none;
   }
  }

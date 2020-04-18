@@ -21,7 +21,12 @@ export default new Vuex.Store({
       state.cart.splice(index,1)
 
     },
-    setOrder:(state,data)=>(state.orderInfo =data)
+    setOrder:(state,data)=>(state.orderInfo =data),
+    //tomt cart after man beställt
+    emptyCart(state){
+      state.cart = []
+
+    }
   },
   actions: {
     async fetchMenuItems({commit}){
@@ -31,6 +36,7 @@ export default new Vuex.Store({
       async postOrder({commit}){
         const response = await axios.post('http://localhost:5000/api/beans')
         commit('setOrder',response.data)
+        commit('emptyCart')
       }
   
   },

@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Menu from '../views/Menu.vue'
-import orderStatus from '../views/orderStatus.vue'
+import OrderStatus from '../views/OrderStatus.vue'
+import Profile from '../views/Profile.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,10 +27,15 @@ const routes = [
   },
   {
     path: '/orderStatus',
-    name: 'orderStatus',
-    component: orderStatus
+    name: 'OrderStatus',
+    component: OrderStatus
   },
 
+{
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
 ]
 
 const router = new VueRouter({
