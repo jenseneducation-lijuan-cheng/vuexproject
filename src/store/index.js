@@ -9,7 +9,11 @@ export default new Vuex.Store({
     menu: [],
     cart:[],
     totalPrice:0,
-    orderInfo:{}
+    orderInfo:{},
+    uuid:'',
+    user:{},
+    orders:[],
+    orderHistorySpent: 0
 
   },
   mutations: {
@@ -26,19 +30,45 @@ export default new Vuex.Store({
     emptyCart(state){
       state.cart = []
 
-    }
+    },
+    setUuid:(state,uuid)=>(state.uuid=uuid),
+    saveUser(state, user){
+      localStorage.setItem("user",JSON.stringify({fullName:user.fullName,userEmail:user.userEmail}))
+      state.user = user;
+    },
+    setOrders:(state,data) =>(state.orders=data)
+
   },
   actions: {
     async fetchMenuItems({commit}){
       const response = await axios.get('http://localhost:5000/api/beans')
       commit('setMenu',response.data.menu)
     },
-      async postOrder({commit}){
-        const response = await axios.post('http://localhost:5000/api/beans')
+      async postOrder({commit, state}){
+        const body = {
+          userID: state.uuid,
+          items: state.cart,
+          totalValue: state.totalPrice
+        }
+        const response = await axios.post('http://localhost:5000/api/beans', body)
         commit('setOrder',response.data)
         commit('emptyCart')
+      },
+      async fetchUuid({commit}){
+        if (localStorage.getItem("uuid")){
+          commit('setUuid',localStorage.uuid)
+        }else{
+        const response = await axios.get('http://localhost:5000/api/beans/key')
+        commit('setUuid',response.data.key)
+        localStorage.setItem("uuid",response.data.key)
+        }
+      },
+      async fetchOrders({commit, state}){
+        const res = await axios.get(`http://localhost:5000/api/beans/getOrders/${state.uuid}`)
+        commit('setOrders',res.data.data)
+
       }
-  
+      
   },
   getters:{
     totalPrice(state){
@@ -50,6 +80,25 @@ export default new Vuex.Store({
 
       return state.totalPrice
 
+    },
+    orderHistorySpent(state) {
+      state.orderHistorySpent = 0
+      state.orders.forEach(item => state.orderHistorySpent += item.totalValue)
+      return state.orderHistorySpent
+    },
+    getUser(state) {
+      // hitta user i localstorage
+      // json.parse kan går fel om user är inte json
+      try {
+        const user = JSON.parse(localStorage.user)
+        if (user.fullName&&user.userEmail) {
+          state.user = user
+        }
+      } catch (error) {
+        console.log("no user")
+      }
+      
+      return state.user
     }
 
   },

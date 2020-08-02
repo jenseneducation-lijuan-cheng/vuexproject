@@ -9,9 +9,9 @@
 
 export default {
   name: 'Home',
- method:{
+ methods:{
    gotoMenu(){
-     this.$router.push('/menu')
+     this.$router.push('/Menu')
    }
  }
 }

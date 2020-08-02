@@ -1,0 +1,88 @@
+{
+  "orders": [
+    {
+      "userID": "{\"userID\":\"c965314e-340e-4a3e-83ab-df9dd98ed4b9\",\"username\":\"\",\"email\":\"\"}",
+      "orderNumber": "AB1595270410199X",
+      "timeStamp": 1595270410199,
+      "items": [
+        {
+          "id": 1,
+          "title": "Bryggkaffe",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 39
+        },
+        {
+          "id": 2,
+          "title": "Caffè Doppio",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        },
+        {
+          "id": 3,
+          "title": "Cappuccino",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        },
+        {
+          "id": 4,
+          "title": "Latte Macchiato",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        },
+        {
+          "id": 5,
+          "title": "Kaffe Latte",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 54
+        }
+      ],
+      "totalValue": 240
+    },
+    {
+      "userID": "{\"userID\":\"c965314e-340e-4a3e-83ab-df9dd98ed4b9\",\"username\":\"\",\"email\":\"\"}",
+      "orderNumber": "AB1595506280051X",
+      "timeStamp": 1595506280051,
+      "items": [
+        {
+          "id": 1,
+          "title": "Bryggkaffe",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 39
+        },
+        {
+          "id": 2,
+          "title": "Caffè Doppio",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        }
+      ],
+      "totalValue": 88
+    },
+    {
+      "userID": "c602ad35-960f-4954-9c45-99436c69a96c",
+      "orderNumber": "AB1596390451795Z",
+      "timeStamp": 1596390451795,
+      "items": [
+        {
+          "id": 1,
+          "title": "Bryggkaffe",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 39
+        },
+        {
+          "id": 2,
+          "title": "Caffè Doppio",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        },
+        {
+          "id": 3,
+          "title": "Cappuccino",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        }
+      ],
+      "totalValue": 137
+    }
+  ]
+}
