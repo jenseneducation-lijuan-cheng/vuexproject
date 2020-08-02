@@ -29,7 +29,11 @@ export default {
     }),
   methods: {
     goTo(path) {
-      this.$router.push(path);
+      this.$router.push(path)
+      // när man är i samma sidan ska tänga menu 
+      .then(this.showMenu = false)
+      .catch(err => { console.log(err) });
+      
     }
   }
 };
@@ -38,7 +42,7 @@ export default {
 <style  lang = scss scoped>
 .top-burger {
   .overL {
-      z-index:1000;
+    z-index:1000;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,7 +1,7 @@
 <template>
   <div class="orderPage">
   
-    <h4>Ordernummer # {{orderInfo.orderNr}}</h4>
+    <h4>Ordernummer # {{orderInfo.order.data.orderNumber}}</h4>
     <img src="../assets/graphics/drone.svg" alt="Airbean Drone" />  
   <h1>Din beställning är på väg</h1>
   <h3>{{orderInfo.eta}} minuter</h3>

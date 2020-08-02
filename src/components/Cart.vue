@@ -61,6 +61,7 @@ export default {
     },
     async postItems() {
       this.loading = true;
+      await this.$store.dispatch("fetchUuid")
       await this.postOrder();
       this.$router.push("/orderStatus");
     }

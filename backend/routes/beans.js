@@ -3,6 +3,9 @@ const router = new Router()
 const fs = require('fs');
 const uuid = require('uuid-random');
 const { generateOrderNr, generateETA } = require('../utils/utils');
+const { addToOrders, findFromOrders, initiateDatabase } = require('../orderOprations');
+
+initiateDatabase();
 
 router.get('/', async (req, res) => {
     const menu = fs.createReadStream('data/menu.json');
@@ -10,9 +13,10 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+    console.log(req.body);
     const order = {
         eta: generateETA(),
-        orderNr: generateOrderNr(),
+        order: addToOrders(req.body),
     }
 
     setTimeout(() => {
@@ -25,6 +29,13 @@ router.get('/key', (req, res) => {
         key: uuid()
     }
     res.send(JSON.stringify(key));
+});
+router.get('/getOrders/:userID',(req,res) => {
+    const userID = req.params.userID;
+    const orders =findFromOrders(userID);
+
+    res.send(JSON.stringify(orders))
 })
+
 
 module.exports = router
